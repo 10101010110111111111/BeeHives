@@ -1,0 +1,27 @@
+Včelař pavel má přes 100 ulů v 15 lokacích sám je nestíhá všechny udržovat tak si najal pommocníky
+Zjistil že pomocníci mají problémy v tom se vyznat co se má udělat protože každý úl má jiné problémy
+z čehož plyne velké množství informací například musí vědět jakému úlu chibí královny atd
+pavel místo práce tak tráví svůj čas rozdáváním ukolů které jsou často repetetivní 
+
+kež jen by existoval způsob jak zařídit aby pomocníci vždy věděli co mají dělat
+ a dokázali okamžitě kontaktovat pavla o tom co se děje tak aby ho envyrušovali od práce
+
+ problémy:
+-1)zaměstnanec neví co má dělat => system pro nejrychlejší cestu k dalšímu místu
+-2)v evidenci v sešitě se hledá dlouho => každý ul bude mít své ID a proto bude jednoduché se k němu demonstratin
+-3)různé problémy na různých místech => automatické sčítání věcí které jsou potřeba např 6523 sklenic na med,13 královen
+
+
+Vytvořit system který umožnuje přihlášení více uživatelů 
+rozdávání ůkolů 
+eventy jako sběr medu atd
+
+zadavatel může přidat ukol
+zaměstanec může splnit ukol a vytvořit poznámku toho co je potřeba
+např oddělaat všechny supery(konkretní číslo) z dané lokace 
+jakože chybí královna nebo že je prázdný úl jaké je množství medu v superu atd
+vše bude evidováno co jaký uživatel kdy udělal
+seznam věcí které jsou potřeba udělat
+seznam statusu jak co jde a kolik čeho je
+
+vytvoření plánů na několik dní 
