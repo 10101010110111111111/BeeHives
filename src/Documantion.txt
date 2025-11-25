@@ -1,0 +1,232 @@
+# BeeTracker Project Documentation
+
+## Overview
+BeeTracker is a comprehensive beekeeping management system designed to help beekeepers track and manage their beehives, tasks, and team members. The system supports multi-user operations with role-based access control and real-time data synchronization.
+
+## System Architecture
+
+### Core Components
+1. **Main.java** - Application entry point
+2. **ProgramLoop.java** - Main application logic and user interface
+3. **DataManager.java** - Handles data persistence and file I/O operations
+4. **User Management** - User authentication and role management
+5. **Hive Management** - Beehive tracking and management
+6. **Task Management** - Task assignment and tracking
+
+### Key Classes
+
+#### User.java
+Represents a user in the system with the following attributes:
+- Username and password for authentication
+- Real name for identification
+- Role (admin or employee)
+- Assigned tasks
+
+#### BeeHive.java
+Represents a beehive with comprehensive tracking capabilities:
+- Unique ID and tag information
+- Location tracking
+- Status monitoring (healthy, needs attention, queenless, empty)
+- Honey level percentage
+- Queen presence tracking
+- Required actions list
+- Notes and history
+
+#### Task.java
+Represents a task in the beekeeping system:
+- Unique ID and descriptive name
+- Detailed description
+- Location association
+- Status tracking (pending, in progress, completed)
+- Creation and completion timestamps
+- Notes field for additional information
+
+#### DataManager.java
+Handles all data persistence operations:
+- File-based storage using DataFile.txt
+- Concurrent access control with read/write locks
+- File locking for data integrity
+- Real-time change detection
+- Default data initialization
+
+### Features
+
+#### Multi-User Support
+- Role-based access control (admin/employee)
+- Secure login system
+- Different permission levels for various operations
+
+#### Hive Management
+- Add, update, and track beehives
+- Monitor hive health and status
+- Track honey production levels
+- Queen presence management
+- Location-based organization
+
+#### Task Management
+- Create and assign tasks
+- Track task progress and completion
+- Location-based task organization
+- Overdue task detection
+
+#### Real-Time Data Synchronization
+- File modification detection
+- Automatic data reloading
+- Concurrent access protection
+- Data consistency across multiple instances
+
+#### Multithreading
+- Background data saving operations
+- Non-blocking user interface
+- Concurrent task processing
+- Thread-safe data operations
+
+### User Roles
+
+#### Administrator (admin)
+- Full system access
+- Manage hives (add, update, delete)
+- Create and manage tasks
+- View all system statistics
+- Manage user accounts
+
+#### Employee (employee)
+- View assigned tasks
+- Complete tasks
+- View hive details
+- Update hive information
+- Add notes and observations
+
+### Data Persistence
+
+#### Storage Format
+Data is stored in a plain text file (DataFile.txt) with the following structure:
+```
+===USERS===
+username|password|name|role
+
+===LOCATIONS===
+location_name
+
+===HIVES===
+NEXT_HIVE_ID:id
+hive_id|tag_number|tag_color|location|status|honey_level|has_queen|notes
+ACTIONS:hive_id
+action_description
+ENDACTIONS:hive_id
+
+===TASKS===
+NEXT_TASK_ID:id
+task_id|name|description|location|status|notes
+```
+
+#### Concurrency Control
+- Read/Write locks for thread safety
+- File locking for multi-process access
+- Automatic change detection
+- Graceful error handling
+
+### Installation and Setup
+
+#### Prerequisites
+- Java Development Kit (JDK) 8 or higher
+- Command line or terminal access
+
+#### Compilation
+```bash
+javac -d bin src/*.java
+```
+
+#### Execution
+```bash
+java -cp bin Main
+```
+
+### Default Users
+1. Admin User:
+   - Username: pavel
+   - Password: password123
+   - Name: Pavel
+   - Role: admin
+
+2. Employee Users:
+   - Username: worker1
+   - Password: worker123
+   - Name: Worker One
+   - Role: employee
+
+   - Username: worker2
+   - Password: worker123
+   - Name: Worker Two
+   - Role: employee
+
+### Sample Data
+The system initializes with sample data including:
+- 3 locations: Forest Location, Meadow Location, Garden Location
+- 5 hives with various statuses
+- 3 tasks for demonstration
+
+### Error Handling
+- File I/O error handling
+- Data parsing error recovery
+- Default data initialization on missing files
+- Graceful degradation on system errors
+
+### Security Considerations
+- Plain text password storage (for demonstration purposes)
+- Role-based access control
+- Input validation and sanitization
+- Concurrent access protection
+
+## Development Information
+
+### Technology Stack
+- Core Java (no external frameworks)
+- Standard Java I/O operations
+- Java Concurrency utilities
+- File-based data storage
+
+### Code Structure
+- Object-oriented design
+- Single responsibility principle
+- Thread-safe operations
+- Clean separation of concerns
+
+### Extensibility
+- Modular design allows for easy feature additions
+- Well-defined interfaces for each component
+- Clear data model for extensions
+- Standard Java practices for maintainability
+
+## Usage Instructions
+
+### Starting the Application
+1. Compile the source code
+2. Run the Main class
+3. Log in with provided credentials
+
+### Navigation
+- Use numeric menu options to navigate
+- Press Enter to continue after operations
+- Follow on-screen prompts for data entry
+
+### Multi-Instance Operation
+- Multiple instances can run simultaneously
+- Data changes are automatically synchronized
+- File locking prevents data corruption
+- Real-time updates across all instances
+
+## Troubleshooting
+
+### Common Issues
+1. **Compilation errors**: Ensure JDK is properly installed and PATH is configured
+2. **File access errors**: Check file permissions for DataFile.txt
+3. **Concurrency issues**: System handles most cases automatically
+4. **Missing data file**: System will create default data on first run
+
+### Support
+For issues with the system, check:
+- Java installation and version
+- File permissions in the application directory
+- Available disk space
+- System resources for thread execution
